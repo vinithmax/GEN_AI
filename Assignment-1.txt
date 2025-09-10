@@ -1,0 +1,207 @@
+Homework Assignment 1:
+
+- I am going to share to 2-3 plain selenium java code
+- You are going to write prompt to convert selenium to playwright typescript
+- Once you convert, you need to copy to this URL and run !
+
+https://try.playwright.tech/?l=playwright-test
+
+Hint: Use ICE POT framework to generate !! 
+
+Note: 
+
+- The selenium code should be working code 
+
+
+
+Context- 
+
+ Your role as an senior automation engineer for Converting below selenium java code to Playwright Typescript code Convert this code- 
+
+Sample Selenium CODE-  https://github.com/TestLeafInc/TestLeafSeleniumTraining/blob/main/week2/day1/Login.java
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Login {
+	
+	public static void main(String[] args) {
+		/*
+		 * Selenium Internal Architecture:
+		 * 
+		 * Selenium (Java) -> REST API -> ChromeDriver (binary) -> Chrome
+		 * ChromeDriver -> Local Server which is built on Js, Python -> Google
+		 * GeckoDriver -> Local Server Js, C++ -> Mozilla
+		 * Selenium (Java) -> REST API -> GeckoDriver (binary) -> Firefox
+		 * 
+		 * Selenium (C#) -> REST API -> ChromeDriver (binary) -> Chrome\
+		 * 
+		 * Selenium Java + REST API is bundled inside the Jar File
+		 * ChromeDriver -> Automate the download -> webdrivermanager 
+		 * Chrome 89 -> Chrome 89 driver
+		 * Chrome 89 + Mac -> Different DRIVER
+		 * 
+		 */
+		
+		/*
+		 * Preconditions:
+		 * 1) Selenium Java Software (
+		 * 2) Browser Driver
+		 * 
+		 * 
+		 * 
+		 * Create a new package 
+		 * Create a new class -> Login
+		 * 
+		 */
+		
+		// Step 0) Setup the chromedriver using webdrivermanager software
+		WebDriverManager.chromedriver().setup(); // .exe or binary
+		
+		// Step 1) Launch the chrome browser (Class Name -> ChromeDriver)
+		ChromeDriver driver = new ChromeDriver();
+		
+		// Step 2) Load the URL (http://leaftaps.com/opentaps/control/main) -> get
+		driver.get("http://leaftaps.com/opentaps");
+		
+		// Step 2b) Add common time to wait for all/any elements to load (Write once)
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+		
+		// Step 3) Maximize the chrome browser
+		driver.manage().window().maximize();
+		
+		// Step 4) Find the username and type the value (DemoSalesManager)
+		driver.findElement(By.id("username1")).sendKeys("DemoSalesManager");
+		
+		// Step 5) Find the password and type the value (crmsfa)
+		driver.findElement(By.id("password")).sendKeys("crmsfa");	
+		
+		// Step 6) Find the login button and click
+		driver.findElement(By.className("decorativeSubmit")).click();
+		
+		// Step 7) Verify the title 
+		String title = driver.getTitle();
+		System.out.println(title);
+
+	}
+
+}
+
+
+Instructions:
+
+[Important] Convert the Selenium java code to Playwright typescript and run in https://try.playwright.tech/ and it should be run without errors.
+-Follow the neccessary guidelines for scripting
+-Use proper comments for naming and readability
+-Use appropriate CSS elements,ID, classname elements
+-[Mandatory] Use assertions, timouts, validations.
+-Import required modules
+-Use proper logic to write the code
+
+Things to remember
+[Mandatory] The outputCode should run without errors.
+
+
+
+[Example 1]:
+import { test, expect } from '@playwright/test';
+
+test.describe('Login functionality', () => {
+
+  test('should login successfully with valid credentials', async ({ page }) => {
+    // Go to login page
+    await page.goto('https://example.com/login');
+    await expect(page).toHaveTitle(/Login/i);
+
+    // Fill login form
+    await page.locator('#username').fill('validUser');
+    await page.locator('#password').fill('validPassword');
+    await page.locator('button[type="submit"]').click();
+
+    // Assert successful login
+    const dashboardHeader = page.locator('h1.dashboard-title');
+    await expect(dashboardHeader).toBeVisible();
+    await expect(dashboardHeader).toHaveText(/Welcome/i);
+  });
+
+  test('should show error with invalid credentials', async ({ page }) => {
+    // Go to login page
+    await page.goto('https://example.com/login');
+    await expect(page).toHaveTitle(/Login/i);
+
+    // Fill with wrong details
+    await page.locator('#username').fill('wrongUser');
+    await page.locator('#password').fill('wrongPassword');
+    await page.locator('button[type="submit"]').click();
+
+    // Assert error
+    const errorMessage = page.locator('.error-message');
+    await expect(errorMessage).toBeVisible();
+    await expect(errorMessage).toContainText(/invalid username or password/i);
+  });
+
+});
+
+
+
+-------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
+
+ASSIGNMNET -1 OUTPUT
+import { test, expect } from '@playwright/test';
+
+test.describe('Login Module - Leaftaps CRM', () => {
+
+  test('✅ should login successfully with valid credentials', async ({ page }) => {
+    // Step 1: Go to Leaftaps Login Page
+    await page.goto('http://leaftaps.com/opentaps/control/main');
+
+    // Step 2: Validate page title
+    await expect(page).toHaveTitle(/Leaftaps/);
+
+    // Step 3: Enter username
+    await page.locator('#username').fill('DemoSalesManager');
+
+    // Step 4: Enter password
+    await page.locator('#password').fill('crmsfa');
+
+    // Step 5: Click Login button
+    await page.locator('.decorativeSubmit').click();
+
+    // Step 6: Validate successful login by checking homepage element
+    const welcomeText = page.locator('text=CRM/SFA'); // after login this link appears
+    await expect(welcomeText).toBeVisible({ timeout: 5000 });
+
+    // Step 7: Print and validate title after login
+    await expect(page).toHaveTitle(/Leaftaps/);
+    console.log('✅ Login successful and title verified.');
+  });
+
+  test('❌ should show error with invalid credentials', async ({ page }) => {
+    // Step 1: Go to Leaftaps Login Page
+    await page.goto('http://leaftaps.com/opentaps/control/main');
+
+    // Step 2: Validate page title
+    await expect(page).toHaveTitle(/Leaftaps/);
+
+    // Step 3: Enter wrong username
+    await page.locator('#username').fill('WrongUser');
+
+    // Step 4: Enter wrong password
+    await page.locator('#password').fill('WrongPass');
+
+    // Step 5: Click Login button
+    await page.locator('.decorativeSubmit').click();
+
+    // Step 6: Validate error message
+    const errorMessage = page.locator('text=User not found');
+    await expect(errorMessage).toBeVisible({ timeout: 5000 });
+
+    console.log('❌ Invalid login validated successfully.');
+  });
+
+});
