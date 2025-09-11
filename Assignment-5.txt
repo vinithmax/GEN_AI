@@ -1,0 +1,92 @@
+
+
+Assignment -5 
+
+New Assignement:Problem Statement : 
+You are going to write a prompt that takes a Teams call transcript as input and extracts only the action items (ignoring all other conversation). 
+Once you write the prompt, you need to test it on a sample transcript and ensure it returns only the action items in a clean, structured format.
+
+
+Context
+
+You're an AI Assitant for Transcripting a conversion, EXTRACT the transcript containing the ACTION items ONLY.
+
+Extract this transcription-
+
+Alice: Good morning everyone! How was your weekend?  
+Bob: Morning! It was great, went hiking. Got a bit sunburned though.  
+Charlie: Haha, classic Bob. I binge-watched a whole series. No regrets!  
+
+Alice: Alright, let’s focus. First item — project Phoenix updates. Bob, how’s the Q3 report coming?  
+Bob: I finished compiling the report yesterday. I’ll email it to everyone by 5 PM today.  
+Charlie: Awesome. I’ll update the slides with the new client feedback and send them to Alice by tomorrow morning.  
+
+Alice: Perfect. Also, please review the budget allocations for next month. I need everyone's feedback by Friday.  
+Bob: Got it. I’ll go through the numbers and share my comments.  
+Charlie: Sure, I’ll review them too.  
+
+Alice: On another note, can someone update the team on the new marketing campaign?  
+Charlie: I need clarification from the marketing team on the target demographics. I’ll follow up today and report by tomorrow.  
+
+Bob: By the way, Alice, did you see the funny meme I sent in the chat?  
+Alice: Yes! That cracked me up 😆  
+
+Alice: Okay, focus time. Reminder: submit your timesheets by end of day today.  
+Bob: Already noted.  
+Charlie: Done, thanks for the reminder.  
+
+Alice: Also, for next week, we need to schedule a brainstorming session for project Orion. I suggest Wednesday at 2 PM.  
+Bob: Works for me.  
+Charlie: Fine by me.  
+
+Alice: Lastly, we have a client call on Thursday. Bob, can you prepare the talking points?  
+Bob: Yes, I’ll draft the talking points and share with the team by Wednesday noon.  
+Charlie: And I’ll prepare the visuals for that call, ready by Wednesday afternoon.  
+
+Alice: That’s all from my side. Oh, and someone bring donuts next Friday, please 😄  
+Bob: Challenge accepted!  
+
+Charlie: Haha, noted.  
+
+Alice: Great job everyone! Keep up the momentum.  
+
+
+
+Instruction-
+[IMPORTANT]- Extract Responbilities,Roles,Tasks, Daily tasks, Notes,Assignments ONLY.
+[IMPORTANT]- Maintain structured format in a list
+[IMPORTANT]- Avoid Irrelavant conversation like, hobbies, general talks, Casual talks,Jokes etc.
+-Maintain the proper naming structure.
+-Ignore non-actionable conversations.
+[IMPORTANT]-Only extract conversations realted to work
+-Format output in a list
+
+-
+
+[Example]-
+Bob → Send status report by 6 PM today.
+Charlie → Prepare slides for tomorrow’s client call.
+
+
+Output-
+Extracted Output should be in a list format 
+
+
+
+
+ASSIGNMENT RESULT_ OUTPUT:
+Bob → Email Q3 report to everyone by 5 PM today.
+
+Charlie → Update slides with new client feedback and send to Alice by tomorrow morning.
+
+All (Alice, Bob, Charlie) → Review budget allocations for next month and provide feedback by Friday.
+
+Charlie → Follow up with marketing team on target demographics and report by tomorrow.
+
+All (Alice, Bob, Charlie) → Submit timesheets by end of day today.
+
+All (Alice, Bob, Charlie) → Attend brainstorming session for Project Orion on Wednesday at 2 PM.
+
+Bob → Draft talking points for client call and share with team by Wednesday noon.
+
+Charlie → Prepare visuals for client call, ready by Wednesday afternoon.
