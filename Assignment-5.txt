@@ -55,38 +55,29 @@ Alice: Great job everyone! Keep up the momentum.
 Instruction-
 [IMPORTANT]- Extract Responbilities,Roles,Tasks, Daily tasks, Notes,Assignments ONLY.
 [IMPORTANT]- Maintain structured format in a list
-[IMPORTANT]- Avoid Irrelavant conversation like, hobbies, general talks, Casual talks,Jokes etc.
+[IMPORTANT]- AVOID Irrelavant conversation like, hobbies, general talks, Casual talks,Jokes, funtalks etc.
 -Maintain the proper naming structure.
--Ignore non-actionable conversations.
-[IMPORTANT]-Only extract conversations realted to work
--Format output in a list
+[CRITICAL]- ONLY Extract work related conversation and-STRICTLY (AVOID other conversations)
 
--
 
 [Example]-
-Bob → Send status report by 6 PM today.
-Charlie → Prepare slides for tomorrow’s client call.
-
+Person	            Task	                                                                Deadline
+Bob	             Email the Q3 report to everyone	                                        Today, 5 PM
+Charlie	            Update slides with new client feedback and send to Alice	            Tomorrow morning
 
 Output-
-Extracted Output should be in a list format 
+Extracted Output should be in a structured format with alignment
 
 
-
-
-ASSIGNMENT RESULT_ OUTPUT:
-Bob → Email Q3 report to everyone by 5 PM today.
-
-Charlie → Update slides with new client feedback and send to Alice by tomorrow morning.
-
-All (Alice, Bob, Charlie) → Review budget allocations for next month and provide feedback by Friday.
-
-Charlie → Follow up with marketing team on target demographics and report by tomorrow.
-
-All (Alice, Bob, Charlie) → Submit timesheets by end of day today.
-
-All (Alice, Bob, Charlie) → Attend brainstorming session for Project Orion on Wednesday at 2 PM.
-
-Bob → Draft talking points for client call and share with team by Wednesday noon.
-
-Charlie → Prepare visuals for client call, ready by Wednesday afternoon.
+Person     | Task                                                        | Deadline
+-----------|------------------------------------------------------------|-------------------------
+Bob        | Email the Q3 report to everyone                             | Today, 5 PM
+Charlie    | Update slides with new client feedback and send to Alice    | Tomorrow morning
+All        | Review budget allocations for next month and provide feedback | Friday
+Bob        | Go through budget numbers and share comments                | Friday
+Charlie    | Review budget numbers                                       | Friday
+Charlie    | Follow up with marketing team on target demographics and report | Tomorrow
+All        | Submit timesheets                                          | End of day today
+Alice      | Schedule brainstorming session for project Orion           | Next week, Wednesday 2 PM
+Bob        | Prepare talking points for client call                      | Wednesday noon
+Charlie    | Prepare visuals for client call                             | Wednesday afternoon
